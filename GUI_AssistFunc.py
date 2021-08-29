@@ -1,4 +1,5 @@
 import tkinter as tk
+
 from AI_HelperFunc import *
 
 class AntiVisus(tk.Tk):
@@ -9,8 +10,8 @@ class AntiVisus(tk.Tk):
         container = tk.Frame(self)
         container.pack(side = "top", fill = "both", expand = True)
   
-        container.grid_rowconfigure(0, weight = 1)
-        container.grid_columnconfigure(0, weight = 1)
+        #container.grid_rowconfigure(0, weight = 1)
+        #container.grid_columnconfigure(0, weight = 1)
         for F in (StartPage, Page1, Page2):
   
             frame = F(container, self)
@@ -24,8 +25,7 @@ class AntiVisus(tk.Tk):
             
         self.show_frame(StartPage)
 
-    def DetectImposter(self):
-        print("hi there, everyone!")
+
         
     def show_frame(self, cont):
         frame = self.frames[cont]
@@ -36,7 +36,7 @@ class AntiVisus(tk.Tk):
 class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-         
+        '''
         # label of frame Layout 2
         label = tk.Label(self, text ="Startpage")
          
@@ -60,16 +60,16 @@ class StartPage(tk.Frame):
         button2.grid(row = 2, column = 1, padx = 10, pady = 10)
         '''
         tk.Frame.__init__(self, parent)
-         
-        self.geometry("200x200")
-        self.bg = tk.PhotoImage(file = "MainShip.png")
+        #root=tk.Tk()
+        #root.geometry("200x200")
+        self.bg = tk.PhotoImage(file = "Images//MainShip.png")
         self.label1 = tk.Label( self.master, image = self.bg)
-        self.label1.place(x = 0, y = 0)
+        self.label1.grid(row = 1, column = 1, padx = 10, pady = 10)
 
         
 
         self.label2 = tk.Label( self.master, text = "Welcome")
-        self.label2.pack(side="top")
+        self.label2.grid(row = 2, column = 1, padx = 10, pady = 10)
 
         
         
@@ -82,8 +82,10 @@ class StartPage(tk.Frame):
         
         self.quiter = tk.Button(self.master, text="QUIT", fg="red",
                               command=self.master.destroy)
-        self.quiter.pack(side="bottom")
-        '''
+        self.quiter.grid(row = 3, column = 1, padx = 10, pady = 10)
+
+    def DetectImposter(self):
+        print("hi there, everyone!")
     
 
 

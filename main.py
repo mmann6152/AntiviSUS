@@ -3,5 +3,8 @@ import tkinter as tk
 
 
 
+
 app = AntiVisus()
+
 app.mainloop()
+ 
