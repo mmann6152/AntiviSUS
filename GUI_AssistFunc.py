@@ -63,13 +63,18 @@ class StartPage(tk.Frame):
         #root=tk.Tk()
         #root.geometry("200x200")
         self.bg = tk.PhotoImage(file = "Images//MainShip.png")
-        self.label1 = tk.Label( self.master, image = self.bg)
-        self.label1.grid(row = 1, column = 1, padx = 10, pady = 10)
+        self.label1 = tk.Label( self, image = self.bg)
+        self.label1.grid(row=0, column=0, rowspan=5, columnspan=5)
 
         
 
-        self.label2 = tk.Label( self.master, text = "Welcome")
-        self.label2.grid(row = 2, column = 1, padx = 10, pady = 10)
+
+        button1 = tk.Button(self, text ="Page 1",
+        command = lambda : controller.show_frame(Page1))
+     
+        # putting the button in its place by
+        # using grid
+        button1.grid(row = 1, column = 1, padx = 10, pady = 10)
 
         
         
@@ -78,10 +83,10 @@ class StartPage(tk.Frame):
         self.hi_there = tk.Button(self)
         self.hi_there["text"] = "Hello World\n(click me)"
         self.hi_there["command"] = self.DetectImposter
-        self.hi_there.pack(pady=20)
+        #self.hi_there.pack(pady=20)
         
-        self.quiter = tk.Button(self.master, text="QUIT", fg="red",
-                              command=self.master.destroy)
+        self.quiter = tk.Button(self, text="QUIT", fg="red",
+                              command=controller.destroy)
         self.quiter.grid(row = 3, column = 1, padx = 10, pady = 10)
 
     def DetectImposter(self):
