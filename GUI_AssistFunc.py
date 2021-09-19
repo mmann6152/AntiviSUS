@@ -1,4 +1,5 @@
 import tkinter as tk
+from PIL import Image, ImageTk
 
 from AI_HelperFunc import *
 
@@ -62,9 +63,15 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         #root=tk.Tk()
         #root.geometry("200x200")
-        self.bg = tk.PhotoImage(file = "Images//MainShip.png")
+        # Read the Image
+        image = Image.open("Images//MainShip.png")
+ 
+        # Resize the image using resize() method
+        resize_image = image.resize((1000, 1000))
+        self.bg = ImageTk.PhotoImage(resize_image)
+
         self.label1 = tk.Label( self, image = self.bg)
-        self.label1.grid(row=0, column=0, rowspan=5, columnspan=5)
+        self.label1.grid(row=0, column=0, rowspan=100, columnspan=100)
 
         
 
