@@ -7,6 +7,7 @@ class AntiVisus(tk.Tk):
     def __init__(self, *args, **kwargs):
         
         tk.Tk.__init__(self, *args, **kwargs)
+        self.attributes('-fullscreen', True)
         self.frames = {}
         container = tk.Frame(self)
         container.pack(side = "top", fill = "both", expand = True)
@@ -65,9 +66,13 @@ class StartPage(tk.Frame):
         #root.geometry("200x200")
         # Read the Image
         image = Image.open("Images//MainShip.png")
- 
+
+        
+        height = self.winfo_screenheight()
+        width = self.winfo_screenwidth()
+
         # Resize the image using resize() method
-        resize_image = image.resize((1000, 1000))
+        resize_image = image.resize((width, height))
         self.bg = ImageTk.PhotoImage(resize_image)
 
         self.label1 = tk.Label( self, image = self.bg)
