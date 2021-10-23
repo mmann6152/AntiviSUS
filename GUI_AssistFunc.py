@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 
 from AI_HelperFunc import *
 
+#Initializes all frames and shows start page
 class AntiVisus(tk.Tk):
     def __init__(self, *args, **kwargs):
         
@@ -12,15 +13,10 @@ class AntiVisus(tk.Tk):
         container = tk.Frame(self)
         container.pack(side = "top", fill = "both", expand = True)
   
-        #container.grid_rowconfigure(0, weight = 1)
-        #container.grid_columnconfigure(0, weight = 1)
-        for F in (StartPage, Page1, Page2):
+        for F in (StartPage, QuickScan, Page2):
   
             frame = F(container, self)
   
-            # initializing frame of that object from
-            # startpage, page1, page2 respectively with
-            # for loop
             self.frames[F] = frame
   
             frame.grid(row = 0, column = 0, sticky ="nsew")
@@ -34,37 +30,11 @@ class AntiVisus(tk.Tk):
         frame.tkraise()
 
 
-        
+#Page that is seen on start up        
 class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        '''
-        # label of frame Layout 2
-        label = tk.Label(self, text ="Startpage")
-         
-        # putting the grid in its place by using
-        # grid
-        label.grid(row = 0, column = 4, padx = 10, pady = 10)
-  
-        button1 = tk.Button(self, text ="Page 1",
-        command = lambda : controller.show_frame(Page1))
-     
-        # putting the button in its place by
-        # using grid
-        button1.grid(row = 1, column = 1, padx = 10, pady = 10)
-  
-        ## button to show frame 2 with text layout2
-        button2 = tk.Button(self, text ="Page 2",
-        command = lambda : controller.show_frame(Page2))
-     
-        # putting the button in its place by
-        # using grid
-        button2.grid(row = 2, column = 1, padx = 10, pady = 10)
-        '''
-        tk.Frame.__init__(self, parent)
-        #root=tk.Tk()
-        #root.geometry("200x200")
-        # Read the Image
+
         image = Image.open("Images//MainShip.png")
 
         
@@ -81,21 +51,16 @@ class StartPage(tk.Frame):
         
 
 
-        button1 = tk.Button(self, text ="Page 1",
+        button1 = tk.Button(self, text ="QuickScan",
         command = lambda : controller.show_frame(Page1))
      
         # putting the button in its place by
         # using grid
         button1.grid(row = 1, column = 1, padx = 10, pady = 10)
-
-        
-        
-        #frame1 = Frame(self.master)
         
         self.hi_there = tk.Button(self)
         self.hi_there["text"] = "Hello World\n(click me)"
         self.hi_there["command"] = self.DetectImposter
-        #self.hi_there.pack(pady=20)
         
         self.quiter = tk.Button(self, text="QUIT", fg="red",
                               command=controller.destroy)
@@ -106,8 +71,8 @@ class StartPage(tk.Frame):
     
 
 
-#Remove Sus Applications
-class Page1(tk.Frame):
+#Do a scan for sus files or programs
+class QuickScan(tk.Frame):
      
     def __init__(self, parent, controller):
          
