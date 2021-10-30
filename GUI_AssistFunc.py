@@ -77,10 +77,10 @@ class QuickScan(tk.Frame):
     def __init__(self, parent, controller):
          
         tk.Frame.__init__(self, parent)
-        
+        '''
         label = tk.Label(self, text ="Page 1")
         label.grid(row = 0, column = 4, padx = 10, pady = 10)
-  
+        
         # button to show frame 2 with text
         # layout2
         button1 = tk.Button(self, text ="StartPage",
@@ -98,26 +98,30 @@ class QuickScan(tk.Frame):
         # putting the button in its place by
         # using grid
         button2.grid(row = 2, column = 1, padx = 10, pady = 10)
-
+        '''
+        
         #Adding Scanning Animation
         frameCnt = 12
-        frames = [PhotoImage(file='Images//among-us-upload.gif',format = 'gif -index %i' %(i)) for i in range(frameCnt)]
+        framey = [ImageTk.PhotoImage(file='Images//among-us-upload.gif',format = 'gif -index %i' %(i)) for i in range(frameCnt)]
 
         
 
         def update(ind):
-            frame = frames[ind]
+            frame = framey[ind]
             ind += 1
             if ind == frameCnt:
                 ind = 0
             label.configure(image=frame)
-            root.after(100, update, ind)
+            self.after(100, update, ind)
 
 
-        label = Label(root)
-        label.pack()
-        root.after(0, update, 0)
-        root.mainloop()
+        label = tk.Label(self)
+        label.grid(row = 3, column = 1, padx = 10, pady = 10)
+        print("ok")
+        self.after(0, update, 0)
+        self.mainloop()
+        
+        
 #Scan for Imposters
 class Page2(tk.Frame):
     def __init__(self, parent, controller):
